@@ -10,7 +10,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
-    - run: npm Install
+    - run: npm install
     - run: npm run build
   test:
     needs: build
@@ -22,7 +22,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 18
-    - run: npm Install
+    - run: npm install
     - run: npm run test
   deploy:
     needs: test
@@ -47,7 +47,7 @@ jobs:
       uses: actions/configure-pages@v3
       with:
         static_site_generator: next
-    - run: npm Install
+    - run: npm install
     - run: npm run build
     - name: upload artifacts
       uses: actions/upload-pages-artifact@v1
