@@ -13,11 +13,11 @@ jobs:
       TEST_VAR: ${{ needs.call_workflow.outputs.new_var}}
     steps:
       - name: echo new var
-      - id: rwvar
-      - run: echo test=$TEST_VAR >> $GITHUB_OUTPUT
+        id: rwvar
+        run: echo test=$TEST_VAR >> $GITHUB_OUTPUT
   test_output:
     needs: after_workflow
     runs-on: ubuntu-latest
     steps:
       - name: echo step output
-      - run: echo ${{ needs.after_workflow.outputs.step_output }} >> $GITHUB_STEP_SUMMARY
+        run: echo ${{ needs.after_workflow.outputs.step_output }} >> $GITHUB_STEP_SUMMARY
