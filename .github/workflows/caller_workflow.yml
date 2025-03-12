@@ -2,7 +2,7 @@ name: caller_workflow
 on: push
 jobs:
   call_workflow:
-    uses: bourbonandrye11/actions/.github/workflows/reusable_workflow.yml@master
+    uses: bourbonandrye11/actions/.github/workflows/reusable_workflow.yml@feature
 
   after_workflow:
     needs: call_workflow
