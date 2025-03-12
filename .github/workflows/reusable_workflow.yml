@@ -1,17 +1,9 @@
 name: reusable_workflow
-<<<<<<< HEAD
 on:
   workflow_call
     outputs:
       new_var: 
         value: ${{ jobs.called_job.outputs.test}}
-=======
-on: 
-  workflow_call
-    outputs:
-      new_var: 
-        value: ${{ jobs.called_job.outputs.test}}
->>>>>>> origin/master
 jobs:
   called_job:
     runs-on: ubuntu-Latest
