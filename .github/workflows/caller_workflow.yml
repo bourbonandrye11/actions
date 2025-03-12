@@ -1,0 +1,23 @@
+name: caller_workflow
+on: pull_request
+jobs:
+  call_workflow:
+    uses: bourbonandrye11/actions/.github/workflows/reusable_workflow.yml@master
+
+  after_workflow:
+    needs: call_workflow
+    runs-on: ubuntu-latest
+    output:
+      step_output: ${{ steps.rwvar.outputs.test}}
+    env:
+      TEST_VAR: ${{ needs.call_workflow.outputs.new_var}}
+    steps:
+      - name: echo new var
+      - id: rwvar
+      - run: echo test=$TEST_VAR >> $GITHUB_OUTPUT
+  test_output:
+    needs: after_workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo step output
+      - run: echo ${{ needs.after_workflow.outputs.step_output }} >> $GITHUB_STEP_SUMMARY
