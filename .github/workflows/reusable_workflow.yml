@@ -1,6 +1,6 @@
 name: reusable_workflow
 on:
-  workflow_call
+  workflow_call:
     outputs:
       new_var: 
         value: ${{ jobs.called_job.outputs.test}}
