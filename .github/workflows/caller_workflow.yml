@@ -7,7 +7,7 @@ jobs:
   after_workflow:
     needs: call_workflow
     runs-on: ubuntu-latest
-    output:
+    outputs:
       step_output: ${{ steps.rwvar.outputs.test}}
     env:
       TEST_VAR: ${{ needs.call_workflow.outputs.new_var}}
