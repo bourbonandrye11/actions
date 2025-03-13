@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - feature
-  permissions: write-all
+ permissions: write-all
   jobs:
     terraform:
       runs-on: ubuntu-Latest
