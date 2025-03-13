@@ -2,7 +2,7 @@ name: terraform_workflow
 on:
   push:
     branches:
-    - 'feature'
+      - 'feature/**'
  permissions: write-all
   jobs:
     terraform:
