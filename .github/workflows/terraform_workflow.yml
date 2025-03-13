@@ -21,3 +21,5 @@ jobs:
       run: terraform -chdir=terraform init -input=false
     - name: terraform plan
       run: terraform -chdir=terraform plan -input=false >> $GITHUB_STEP_SUMMARY
+    - name: terraform apply
+      run: terraform -chdir=terraform apply -auto-approve -input=false >> $GITHUB_STEP_SUMMARY
