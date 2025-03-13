@@ -15,9 +15,9 @@ jobs:
         role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
     - name: setup terraform
       uses: hashicorp/setup-terraform@v3
-   #     with:
-   #       cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-    - name: terraform init
-      run: terraform -chdir=terraform init -input=false
-    - name: terraform plan
-      run: terraform -chdir=terraform plan -input=false >> $GITHUB_STEP_SUMMARY
+      with:
+       cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    - name: terraform init ./terraform
+      run: terraform init -input=false
+    - name: terraform plan ./terraform
+      run: terraform plan -input=false >> $GITHUB_STEP_SUMMARY
