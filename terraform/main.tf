@@ -68,8 +68,8 @@ resource "aws_route_table" "tf_public_route_table" {
 }
 
 resource "aws_route_table_association" "tf_public_subnet_association" {
-    for_each = toset(aws_subnet.tf_public_subnet)
-    subnet_id = each.value.id
+    count = length(var.public_subnet_cidrs)
+    subnet_id = element(aws_subnet.tf_public_subnet[*].id, count.index)
     route_table_id = aws_route_table.tf_public_route_table.id
     depends_on = [ aws_subnet.tf_public_subnet ]
 }
