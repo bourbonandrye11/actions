@@ -1,0 +1,27 @@
+name: terraform_workflow
+on:
+  push:
+    branches:
+      - feature
+  workflow_dispatch:
+  permissions: write-all
+  jobs:
+    terraform:
+      runs-on: ubuntu-Latest
+      env:
+        aws_region: "us-east-1"
+      steps:
+      - uses: actions/checkout@v4
+      - name: auth-aws
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ env.aws_region }}
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+      - name: setup terraform
+        uses: hashicorp/setup-terraform@v3
+   #     with:
+   #       cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - name: terraform init
+        run: terraform init -input=false
+      - name: terraform plan
+        run: terraform plan -input=false >> $GITHUB_STEP_SUMMARY
