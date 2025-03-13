@@ -1,6 +1,6 @@
 name: terraform_workflow
-on: [push]
- permissions: write-all
+on: push
+permissions: write-all
   jobs:
     terraform:
       runs-on: ubuntu-Latest
