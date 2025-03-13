@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - feature
-  workflow_dispatch:
   permissions: write-all
   jobs:
     terraform:
@@ -21,7 +20,7 @@ on:
         uses: hashicorp/setup-terraform@v3
    #     with:
    #       cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-      - name: terraform init
+      - name: terraform init ./terraform
         run: terraform init -input=false
-      - name: terraform plan
+      - name: terraform plan ./terraform
         run: terraform plan -input=false >> $GITHUB_STEP_SUMMARY
