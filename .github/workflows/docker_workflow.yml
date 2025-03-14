@@ -29,6 +29,7 @@ jobs:
         tags: public.ecr.aws/x2j7z4y4/docker_test:latest
   pull_request:
     runs-on: ubuntu-Latest
+    needs: docker
     steps:
     - name: create pull pull request
       id: create_pull_request
