@@ -2,6 +2,7 @@ name: docker_workflow
 on: push
 jobs:
   docker:
+    permissions: write-all
     runs-on: ubuntu-Latest
     env:
       aws_region: "us-east-1"
