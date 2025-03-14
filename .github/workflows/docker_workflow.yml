@@ -28,6 +28,7 @@ jobs:
         push: true
         tags: public.ecr.aws/x2j7z4y4/docker_test:latest
   pull_request:
+    permissions: write-all
     runs-on: ubuntu-Latest
     needs: docker
     steps:
